@@ -600,3 +600,15 @@ def test_bool_as_default_param(app):
     assert resp.status_code == 200
     response = json.loads(resp.data.decode())
     assert response == True
+
+
+def test_redirect_endpoint(app):
+    app_client = app.app.test_client()
+    resp = app_client.get('/v1.0/test-redirect-endpoint')
+    assert resp.status_code == 302
+
+
+def test_redirect_response_endpoint(app):
+    app_client = app.app.test_client()
+    resp = app_client.get('/v1.0/test-redirect-response-endpoint')
+    assert resp.status_code == 302
