@@ -230,3 +230,6 @@ def test_formData_missing_param():
 
 def test_bool_default_param(thruthiness):
     return thruthiness
+
+def test_missing_params_bug(p):
+    return {'p': p}

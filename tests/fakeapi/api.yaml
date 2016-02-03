@@ -646,6 +646,16 @@ paths:
           in: query
           default: false
 
+  /test-missing-params-bug:
+    get:
+      summary: Test missing params bug
+      operationId: fakeapi.hello.test_missing_params_bug
+      parameters:
+        - name: p
+          type: string
+          in: query
+          required: true
+
 definitions:
   new_stack:
     type: object

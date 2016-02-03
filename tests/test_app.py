@@ -600,3 +600,13 @@ def test_bool_as_default_param(app):
     assert resp.status_code == 200
     response = json.loads(resp.data.decode())
     assert response == True
+
+
+def test_missing_params_bug(app):
+    app_client = app.app.test_client()
+    resp = app_client.get('/v1.0/test-missing-params-bug')
+    assert resp.status_code == 400
+    resp = app_client.get('/v1.0/test-missing-params-bug', query_string={'p': 'test'})
+    assert resp.status_code == 200
+    resp = app_client.get('/v1.0/test-missing-params-bug')
+    assert resp.status_code == 400
