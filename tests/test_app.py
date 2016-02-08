@@ -725,7 +725,7 @@ def test_redirect_response_endpoint(app):
     assert resp.status_code == 302
 
 
-def test_required_param_miss_config(app):
+def test_mixed_params(app):
     app_client = app.app.test_client()
     resp = app_client.post('/v1.0/test-mixed-params/1', data=json.dumps('test'))
     assert resp.status_code == 200
