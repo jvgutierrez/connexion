@@ -76,7 +76,7 @@ def parameter_to_arg(parameters, function):
         logger.debug('Function Arguments: %s', arguments)
 
         try:
-            request_body = flask.request.json
+            request_body = flask.request.get_json()
         except exceptions.BadRequest:
             request_body = None
 
@@ -85,11 +85,14 @@ def parameter_to_arg(parameters, function):
 
         # Add body parameters
         if request_body is not None:
+            logger.debug("I have a body parameter")
             if body_name not in arguments:
                 logger.debug("Body parameter '%s' not in function arguments", body_name)
             else:
                 logger.debug("Body parameter '%s' in function arguments", body_name)
                 kwargs[body_name] = request_body
+        else:
+            logger.debug("I dont have a body parameter")
 
         # Add query parameters
         query_arguments = copy.deepcopy(default_query_params)
