@@ -253,3 +253,8 @@ def test_redirect_endpoint():
 
 def test_redirect_response_endpoint():
     return redirect('http://www.google.com/')
+
+
+def test_mixed_params(path_param, body_param):
+    return {'path_param': path_param,
+            'body_param': body_param}

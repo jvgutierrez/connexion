@@ -663,6 +663,18 @@ paths:
           type: string
           in: formData
           required: true
+  /test-mixed-params/{path_param}:
+    post:
+      summary: Test mixed params (path and body)
+      operationId: fakeapi.hello.test_mixed_params
+      parameters:
+        - name: path_param
+          type: string
+          in: path
+          required: true
+        - name: body_param
+          in: body
+          required: true
 
   /test-formData-missing-param:
     post:
